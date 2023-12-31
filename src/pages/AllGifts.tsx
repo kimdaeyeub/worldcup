@@ -1,26 +1,20 @@
-import { collection, getDocs, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../Firebase";
 import ItemCard from "../components/ItemCard";
-
-interface IGift {
-  title: string;
-  description: string;
-  username: string;
-  creator: string;
-  createdAt: number;
-  tags: string[];
-  photo: string;
-  id: string;
-  count: number;
-}
+import { IGift } from "../types";
+import { useRecoilState } from "recoil";
+import { allGifts } from "../atom";
 
 const AllGifts = () => {
-  const [gifts, setGifts] = useState<IGift[]>([]);
+  const [gifts, setGifts] = useRecoilState<IGift[]>(allGifts);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchGifts = async () => {
-    const giftQuery = query(collection(db, "gifts"));
+    const giftQuery = query(
+      collection(db, "gifts"),
+      orderBy("createdAt", "desc")
+    );
 
     const querySnapshot = await getDocs(giftQuery);
     const datas = querySnapshot.docs.map((doc) => {

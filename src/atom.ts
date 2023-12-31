@@ -1,18 +1,22 @@
 import { atom } from "recoil";
+import { IGift, IWorldCup } from "./types";
 
-interface IGift {
-  title: string;
-  description: string;
-  username: string;
-  creator: string;
-  createdAt: number;
-  tags: string[];
-  photo: string;
-  id: string;
-  count: number;
-}
-
-export const giftDetailState = atom({
+export const giftDetailState = atom<IGift | null>({
   key: "giftDetailState",
-  default: <IGift>{},
+  default: null,
+});
+
+export const allGifts = atom<IGift[] | []>({
+  key: "allGifts",
+  default: [],
+});
+
+export const allWorldcups = atom<IWorldCup[] | []>({
+  key: "allWorldcups",
+  default: [],
+});
+
+export const worldcupDetail = atom<IWorldCup | null>({
+  key: "worldcupDetail",
+  default: null,
 });

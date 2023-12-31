@@ -5,6 +5,9 @@ import Detail from "./pages/Detail";
 import AddGift from "./pages/AddGift";
 import AllGifts from "./pages/AllGifts";
 import GiftDetail from "./pages/GiftDetail";
+import AddWorldcup from "./pages/AddWorldcup";
+import PlayTournament from "./pages/PlayTournament";
+import TournamentResult from "./pages/TournamentResult";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +33,18 @@ const router = createBrowserRouter([
       {
         path: "gifts/:id",
         element: <GiftDetail />,
+      },
+      {
+        path: "worldcups/add",
+        element: <AddWorldcup />,
+      },
+      {
+        path: "worldcups/play/:id",
+        element: <PlayTournament />,
+      },
+      {
+        path: "worldcups/play/:id/result",
+        element: <TournamentResult />,
       },
     ],
   },
