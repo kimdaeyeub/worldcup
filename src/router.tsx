@@ -3,6 +3,8 @@ import Root from "./pages/Root";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import AddGift from "./pages/AddGift";
+import AllGifts from "./pages/AllGifts";
+import GiftDetail from "./pages/GiftDetail";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +20,16 @@ const router = createBrowserRouter([
         element: <Detail />,
       },
       {
-        path: "/gifts/add",
+        path: "gifts/add",
         element: <AddGift />,
+      },
+      {
+        path: "gifts",
+        element: <AllGifts />,
+      },
+      {
+        path: "gifts/:id",
+        element: <GiftDetail />,
       },
     ],
   },

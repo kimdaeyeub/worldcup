@@ -1,25 +1,3 @@
-import {
-  Avatar,
-  Button,
-  Divider,
-  HStack,
-  Input,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-  Show,
-  Text,
-  VStack,
-  useDisclosure,
-  useMediaQuery,
-} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Form, Link, useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
@@ -27,45 +5,17 @@ import {
   GithubAuthProvider,
   User,
   onAuthStateChanged,
-  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { FirebaseError } from "firebase/app";
+import { FaGithub } from "react-icons/fa";
 
 const Nav = () => {
   const navigate = useNavigate();
-  const { onOpen, isOpen, onClose } = useDisclosure();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User | null>();
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.name === "email") {
-      setEmail(e.target.value);
-    } else {
-      setPassword(e.target.value);
-    }
-  };
-
-  const handleSubmit = async () => {
-    try {
-      const userCredentails = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      setUser(userCredentails.user);
-    } catch (error) {
-      if (error instanceof FirebaseError) {
-        setError(error.message);
-      }
-    } finally {
-      onClose();
-    }
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   const logOut = async () => {
     try {
@@ -77,6 +27,10 @@ const Nav = () => {
     }
   };
 
+  const openDropDownMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   const onClickLogo = () => {
     navigate("/");
   };
@@ -85,12 +39,9 @@ const Nav = () => {
     try {
       const provider = new GithubAuthProvider();
       const response = await signInWithPopup(auth, provider);
-
-      console.log(response.user);
     } catch (error) {
       console.log(error);
     } finally {
-      onClose();
     }
   };
 
@@ -105,108 +56,55 @@ const Nav = () => {
     setIsLoading(false);
   }, []);
 
-  console.log(user);
   return (
-    <>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <HStack
-            px={{
-              lg: "150px",
-              md: "80px",
-              sm: "55px",
-            }}
-            py={25}
-            borderBottomWidth={"medium"}
-            borderBottomColor={"gray"}
-            justifyContent={"space-between"}
+    <div className="w-full px-40 py-8 border-b border-black flex justify-between items-center">
+      <h1
+        onClick={onClickLogo}
+        className="text-4xl font-semibold cursor-pointer"
+      >
+        Logo
+      </h1>
+      <div className="flex justify-center items-center space-x-6">
+        <Link to="/gifts">
+          <span className="text-xl font-medium">선물 조회하기</span>
+        </Link>
+        <Link to="/gifts/add">
+          <span className="text-xl font-medium">선물 추가하기</span>
+        </Link>
+        <Link to="/worldcups/add">
+          <span className="text-xl font-medium">월드컵 추가하기</span>
+        </Link>
+        {user ? (
+          <div className="relative">
+            <img
+              onClick={openDropDownMenu}
+              src={user!.photoURL!}
+              alt="avatar_image"
+              className="w-12 h-12 rounded-full object-cover"
+            />
+            {isOpen && (
+              <div className="w-60 bg-gray-100 rounded-lg absolute right-0 mt-4 flex flex-col justify-center items-center">
+                <button
+                  onClick={logOut}
+                  className="w-full py-4 border-b border-gray-300"
+                >
+                  로그아웃
+                </button>
+                <button className="w-full py-4">프로필 조회</button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <button
+            onClick={onClickGithubLogin}
+            className="px-4 py-2 rounded-lg bg-black text-white text-xl flex justify-center items-center space-x-2"
           >
-            <Text
-              onClick={onClickLogo}
-              fontWeight={"600"}
-              fontSize={"xxx-large"}
-            >
-              Logo
-            </Text>
-            <HStack spacing={10}>
-              <Show above="md">
-                <Text fontSize={"large"} fontWeight={"600"}>
-                  선물 조회하기
-                </Text>
-                <Text fontSize={"large"} fontWeight={"600"}>
-                  <Link to="/gifts/add">선물 추가하기</Link>
-                </Text>
-                <Text fontSize={"large"} fontWeight={"600"}>
-                  월드컵 추가하기
-                </Text>
-              </Show>
-              {user ? (
-                <Menu>
-                  <MenuButton>
-                    <Avatar src={user.photoURL ? user.photoURL : ""} />
-                  </MenuButton>
-                  <MenuList>
-                    <MenuItem onClick={logOut}>로그아웃</MenuItem>
-                    <MenuItem>프로필</MenuItem>
-                  </MenuList>
-                </Menu>
-              ) : (
-                <Button onClick={onOpen}>로그인</Button>
-              )}
-              {/* <Text>{user?.email}</Text> */}
-            </HStack>
-          </HStack>
-          <Modal isOpen={isOpen} onClose={onClose} size={"xl"} isCentered>
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>header</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody>
-                <VStack spacing={2}>
-                  <Input
-                    onChange={onChange}
-                    type="email"
-                    value={email}
-                    name="email"
-                    placeholder="Email"
-                    px={3}
-                    py={5}
-                  />
-                  <Input
-                    onChange={onChange}
-                    type="password"
-                    value={password}
-                    title="password"
-                    placeholder="Password"
-                  />
-                  <Divider my={5} />
-                  <Button
-                    fontSize={"larger"}
-                    size={"lg"}
-                    onClick={handleSubmit}
-                    w={"100%"}
-                  >
-                    로그인
-                  </Button>
-                  <Button
-                    onClick={onClickGithubLogin}
-                    bgColor={"black"}
-                    textColor={"white"}
-                    fontSize={"larger"}
-                    w={"100%"}
-                    size={"lg"}
-                  >
-                    Github
-                  </Button>
-                </VStack>
-              </ModalBody>
-            </ModalContent>
-          </Modal>
-        </>
-      )}
-    </>
+            <FaGithub />
+            <span>Login</span>
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 export default Nav;
