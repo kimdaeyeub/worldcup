@@ -18,3 +18,9 @@ export interface IWorldCup {
   round: number;
   id: string;
 }
+
+export interface IResult {
+  player: string;
+  winner: IGift;
+  tournament: IWorldCup;
+}

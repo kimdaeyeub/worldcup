@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         element: <PlayTournament />,
       },
       {
-        path: "worldcups/play/:id/result",
+        path: "worldcups/result/:id",
         element: <TournamentResult />,
       },
     ],

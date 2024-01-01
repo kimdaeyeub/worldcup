@@ -2,7 +2,7 @@ import React from "react";
 
 const SelectCard = () => {
   return (
-    <div className="w-full h-full overflow-hidden p-3 bg-white rounded-xl flex flex-col justify-center items-center space-y-3 cursor-pointer">
+    <div className="w-full md:h-full h-[650px] overflow-hidden p-3 bg-white rounded-xl flex flex-col justify-center items-center space-y-3 cursor-pointer">
       <svg
         className="text-green-500"
         width={400}

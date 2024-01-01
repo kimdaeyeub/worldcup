@@ -30,6 +30,9 @@ const GiftDetail = () => {
     if (gift === null) {
       getGiftDetail(params.id!);
     }
+    if (gift?.id !== params.id) {
+      getGiftDetail(params.id!);
+    }
     // if (gift?.id !== params.id) {
     //   console.log("different");
     //   getGiftDetail(params.id!);
@@ -47,16 +50,16 @@ const GiftDetail = () => {
         <>
           {error === "" && gift !== null ? (
             <div className="w-full h-full">
-              <div className="w-full h-80 bg-purple-400 relative mb-44">
+              <div className="w-full h-80 bg-purple-400 relative md:mb-44">
                 <img
                   src={gift?.photo}
                   alt="item_image"
                   width={500}
                   height={500}
-                  className="absolute top-full bottom-10 left-40 m-auto w-96 h-96 rounded-full object-cover"
+                  className="absolute md:top-full md:bottom-10 md:left-40 md:m-auto md:w-96 md:h-96 md:rounded-full object-cover w-full h-full"
                 />
               </div>
-              <section className="h-full w-full flex flex-col justify-start items-start px-44 pt-16 pb-20 space-y-14">
+              <section className="h-full w-full flex flex-col justify-start items-start px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 pt-16 pb-20 space-y-14">
                 <ItemTextBox title="선물명" detail={gift!.title} />
                 <ItemTextBox title="상세정보" detail={gift!.description} />
               </section>

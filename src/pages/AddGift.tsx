@@ -69,10 +69,10 @@ const AddGift = () => {
     }
   };
   return (
-    <div className="w-full h-screen px-44 py-14 bg-purple-400">
+    <div className="w-full min-h-screen px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 py-14 bg-purple-400">
       <form
         onSubmit={handleSubmit}
-        className="rounded-2xl grid grid-cols-2 p-5 bg-white"
+        className="rounded-2xl grid md:grid-cols-2 grid-cols-1 p-5 bg-white"
       >
         {image === null ? (
           <label className="w-full min-h-[550px] border-2 border-black rounded-xl border-dashed flex justify-center items-center">
@@ -106,7 +106,7 @@ const AddGift = () => {
           </div>
         )}
 
-        <div className="w-full h-full flex flex-col justify-start items-start px-10">
+        <div className="w-full h-full flex flex-col justify-start items-start md:px-10 mt-5">
           <h1 className="text-xl font-medium">상품명</h1>
           <input
             onChange={onChange}

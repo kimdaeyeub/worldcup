@@ -16,6 +16,7 @@ interface IProp {
   id: string;
   createdAt: number;
   username: string;
+  index: number;
 }
 const ItemCard = ({
   hasRank,
@@ -28,6 +29,7 @@ const ItemCard = ({
   id,
   createdAt,
   username,
+  index,
 }: IProp) => {
   const [giftDetail, setGiftDetail] = useRecoilState(giftDetailState);
   const onClick = () => {
@@ -55,10 +57,18 @@ const ItemCard = ({
             className="w-full h-[300px] object-cover rounded-md"
           />
           {hasRank && (
-            <div className="text-yellow-400 absolute top-4 left-4 flex justify-center items-center">
+            <div
+              className={`absolute top-4 left-4 flex justify-center items-center ${
+                index === 0
+                  ? "text-yellow-400"
+                  : index === 1
+                  ? "text-gray-400"
+                  : "text-amber-900"
+              }`}
+            >
               <FaCertificate size={40} />
               <span className="text-white absolute text-xl font-semibold">
-                {count}
+                {index + 1}
               </span>
             </div>
           )}

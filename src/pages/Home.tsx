@@ -37,12 +37,16 @@ const Home = () => {
   return (
     <>
       {isLoading ? (
-        <div className="w-full h-screen flex justify-center items-center">
+        <div className="w-full min-h-screen flex justify-center items-center">
           <span className="text-4xl font-semibold">Loading...</span>
         </div>
       ) : (
         <>
-          <div className="w-full h-80 bg-purple-400 relative">
+          <div className="w-full h-80 bg-purple-400 overflow-hidden">
+            <img
+              src={"gift1.png"}
+              className="w-full h-full object-right object-cover"
+            />
             {/* <input className="absolute top-full bottom-10 left-0 right-0 m-auto w-1/2 h-12 rounded-full outline-none border px-16 shadow-lg" />
         <svg
           className="w-8 absolute top-full left-14 right-1/2 m-auto bottom-10 text-gray-300"
@@ -61,7 +65,7 @@ const Home = () => {
           ></path>
         </svg> */}
           </div>
-          <section className="min-h-96 w-full py-16 px-32 grid grid-cols-4 gap-5">
+          <section className="min-h-96 w-full py-16 px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
             {worldcups.map((item) => (
               <TournamentCard key={item.id} {...item} />
             ))}

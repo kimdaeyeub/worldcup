@@ -11,10 +11,7 @@ const AllGifts = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchGifts = async () => {
-    const giftQuery = query(
-      collection(db, "gifts"),
-      orderBy("createdAt", "desc")
-    );
+    const giftQuery = query(collection(db, "gifts"), orderBy("count", "desc"));
 
     const querySnapshot = await getDocs(giftQuery);
     const datas = querySnapshot.docs.map((doc) => {
@@ -50,9 +47,9 @@ const AllGifts = () => {
     setIsLoading(false);
   }, []);
   return (
-    <section className="min-h-96 w-full py-24 px-32 grid grid-cols-4 gap-5">
-      {gifts?.map((item) => (
-        <ItemCard key={item.id} hasRank {...item} />
+    <section className="min-h-96 w-full py-24 px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+      {gifts?.map((item, index) => (
+        <ItemCard key={item.id} {...item} hasRank={index < 3} index={index} />
       ))}
     </section>
   );

@@ -2,7 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        // SingleDay: ["Single Day", "cursive"],
+        // NanumPenScript: ["Nanum Pen Script", "cursive"],
+      },
+    },
   },
   plugins: [],
 };

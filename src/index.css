@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-SingleDay {
+  font-family: "Single Day", cursive;
+}
+.font-dancingScript {
+  font-family: "Dancing Script", cursive;
+}

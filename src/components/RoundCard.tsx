@@ -35,7 +35,7 @@ const RoundCard = ({ onClickPlay, round }: IProp) => {
       <span className="text-3xl font-semibold mb-2 mt-5">
         {tournament?.title}
       </span>
-      <span className="text-lg font-medium text-gray-400 mt-2 text-center w-3/4">
+      <span className="md:flex hidden text-lg font-medium text-gray-400 mt-2 text-center w-2/3">
         {tournament?.description}
       </span>
       <button

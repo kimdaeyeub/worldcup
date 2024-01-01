@@ -143,10 +143,12 @@ const AddWorldcup = () => {
           {gifts.length === 0 ? (
             <div>Empty...</div>
           ) : (
-            <div className="w-full h-full flex flex-col justify-start items-end px-36 py-8">
-              <div className="w-full mb-8 flex justify-between items-center space-x-10">
-                <div className="w-full flex justify-center items-center space-x-4">
-                  <span className="text-nowrap text-xl font-medium">제목:</span>
+            <div className="w-full h-full flex flex-col justify-start items-end px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 py-8">
+              <div className="w-full mb-8 flex md:flex-row flex-col-reverse justify-between items-center md:space-x-10">
+                <div className="w-full flex justify-center md:items-center md:space-x-4 md:flex-row flex-col items-start">
+                  <span className="text-nowrap text-xl font-medium md:mb-0 mb-5">
+                    제목:
+                  </span>
                   <input
                     value={title}
                     onChange={onChangeTitle}
@@ -154,7 +156,7 @@ const AddWorldcup = () => {
                     className="bg-gray-100 px-4 py-2 rounded-md w-full outline-none"
                   />
                 </div>
-                <div className="w-64 relative">
+                <div className="md:w-64 w-full relative mb-10 md:mb-0">
                   <button
                     onClick={onClickDropDown}
                     className="w-full px-6 py-2 flex justify-between items-center space-x-8 border rounded-md"
@@ -205,8 +207,10 @@ const AddWorldcup = () => {
                   )}
                 </div>
               </div>
-              <div className="flex justify-center items-start w-full mb-4 space-x-4">
-                <span className="text-nowrap text-xl font-medium">설명</span>
+              <div className="flex justify-center items-start md:flex-row flex-col w-full mb-4 md:space-x-4">
+                <span className="text-nowrap text-xl font-medium md:mb-0 mb-5">
+                  설명:
+                </span>
                 <textarea
                   value={description}
                   onChange={onChangeDescription}
@@ -214,7 +218,7 @@ const AddWorldcup = () => {
                   rows={5}
                 />
               </div>
-              <div className="w-full h-full grid grid-cols-2 gap-8">
+              <div className="w-full h-full grid md:grid-cols-2 grid-cols-1 gap-8">
                 <div className="w-full min-h-[700px] rounded-md flex flex-col p-3 space-y-3 border border-slate-300">
                   <div className="px-4 py-3 border-b-2 border-slate-400 mb-3">
                     <span className="text-xl font-medium">선물 목록</span>

@@ -1,33 +1,32 @@
 import React, { useState } from "react";
 import Tag from "./Tag";
+import { ChildProcess } from "child_process";
 
 interface IProp {
   onSelect: () => void;
+  title: string;
+  tags: string[];
+  photo: string;
 }
 
-const PlayCard = ({ onSelect }: IProp) => {
-  const [choice, setChoice] = useState(false);
+const PlayCard = ({ onSelect, title, tags, photo }: IProp) => {
   return (
     <div
-      onClick={() => {
-        onSelect();
-        setChoice(true);
-      }}
-      className="w-full h-full overflow-hidden p-3 bg-white rounded-xl flex flex-col justify-center items-start space-y-3 cursor-pointer"
+      onClick={onSelect}
+      className="w-full md:h-full h-[650px] overflow-hidden p-3 bg-white rounded-xl flex flex-col justify-center items-start space-y-3 cursor-pointer"
     >
       <img
-        className="w-full h-full rounded-xl"
+        className="w-full md:h-[700px] h-[500px] rounded-xl object-cover overflow-hidden"
         width={1000}
         height={1000}
-        src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        src={photo}
         alt="tournament_image"
       />
-      <span className="text-xl">Hello</span>
+      <span className="text-xl">{title}</span>
       <div className="w-full flex flex-wrap gap-3">
-        <Tag tag="10대" />
-        <Tag tag="10대" />
-        <Tag tag="10대" />
-        <Tag tag="10대" />
+        {tags.map((tag) => (
+          <Tag key={tag} tag={tag} />
+        ))}
       </div>
     </div>
   );
