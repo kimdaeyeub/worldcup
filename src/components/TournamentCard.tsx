@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IWorldCup } from "../types";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { worldcupDetail } from "../atom";
 
 const TournamentCard = ({
@@ -12,7 +12,7 @@ const TournamentCard = ({
   round,
   id,
 }: IWorldCup) => {
-  const [worldcup, setWorldcup] = useRecoilState(worldcupDetail);
+  const setWorldcup = useSetRecoilState(worldcupDetail);
   const onClick = () => {
     const data = { gifts, title, description, creator, round, id };
     setWorldcup(data);
@@ -52,10 +52,6 @@ const TournamentCard = ({
         </div>
         <h1 className="text-lg mt-3">{title}</h1>
         <span className="w-full text-slate-500 text-sm mt-2">{creator}</span>
-        {/* <div className="w-full flex justify-start items-center space-x-2">
-          <span className="text-slate-500 text-sm">2023-12-24</span>
-          <span className="text-slate-500 text-sm">114명</span>
-        </div> */}
       </div>
     </Link>
   );

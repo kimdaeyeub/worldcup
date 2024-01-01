@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TournamentCard from "../components/TournamentCard";
-import { IWorldCup } from "../types";
 import { useRecoilState } from "recoil";
 import { allWorldcups } from "../atom";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../Firebase";
 
 const Home = () => {
@@ -45,25 +44,9 @@ const Home = () => {
           <div className="w-full h-80 bg-purple-400 overflow-hidden">
             <img
               src={"gift1.png"}
+              alt="image"
               className="w-full h-full object-right object-cover"
             />
-            {/* <input className="absolute top-full bottom-10 left-0 right-0 m-auto w-1/2 h-12 rounded-full outline-none border px-16 shadow-lg" />
-        <svg
-          className="w-8 absolute top-full left-14 right-1/2 m-auto bottom-10 text-gray-300"
-          data-slot="icon"
-          fill="none"
-          strokeWidth="2.5"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-          ></path>
-        </svg> */}
           </div>
           <section className="min-h-96 w-full py-16 px-8 sm:px-10 md:px-12 lg:px-24 xl:px-28 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
             {worldcups.map((item) => (

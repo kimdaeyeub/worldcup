@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Form, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
 import {
   GithubAuthProvider,
@@ -12,8 +12,6 @@ import { FaGithub } from "react-icons/fa";
 
 const Nav = () => {
   const navigate = useNavigate();
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User | null>();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -38,7 +36,7 @@ const Nav = () => {
   const onClickGithubLogin = async () => {
     try {
       const provider = new GithubAuthProvider();
-      const response = await signInWithPopup(auth, provider);
+      await signInWithPopup(auth, provider);
     } catch (error) {
       console.log(error);
     } finally {
@@ -53,7 +51,6 @@ const Nav = () => {
         setUser(null);
       }
     });
-    setIsLoading(false);
   }, []);
 
   return (

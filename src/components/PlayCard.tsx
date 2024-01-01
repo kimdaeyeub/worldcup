@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Tag from "./Tag";
-import { ChildProcess } from "child_process";
 
 interface IProp {
   onSelect: () => void;

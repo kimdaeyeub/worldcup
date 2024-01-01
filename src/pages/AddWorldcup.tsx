@@ -29,7 +29,6 @@ const AddWorldcup = () => {
   //api로부터 선물 목록을 받아와서 저장할 변수
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [error, setError] = useState("");
 
   const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -54,7 +53,6 @@ const AddWorldcup = () => {
       deleteItems(item);
     } else {
       if (num === selectItem.length) {
-        setError("해당 대진의 선물 갯수를 초과했습니다");
         return window.confirm("해당 대진의 선물 갯수를 초과했습니다");
       }
       setSelectItem([...selectItem, item]);
@@ -219,7 +217,7 @@ const AddWorldcup = () => {
                 />
               </div>
               <div className="w-full h-full grid md:grid-cols-2 grid-cols-1 gap-8">
-                <div className="w-full min-h-[700px] rounded-md flex flex-col p-3 space-y-3 border border-slate-300">
+                <div className="w-full min-h-[700px] h-fit rounded-md flex flex-col p-3 space-y-3 border border-slate-300">
                   <div className="px-4 py-3 border-b-2 border-slate-400 mb-3">
                     <span className="text-xl font-medium">선물 목록</span>
                   </div>
@@ -247,7 +245,7 @@ const AddWorldcup = () => {
                     </div>
                   ))}
                 </div>
-                <div className="w-full min-h-[700px] rounded-md flex flex-col p-3 space-y-3 border border-slate-300">
+                <div className="w-full min-h-[700px] h-full rounded-md flex flex-col p-3 space-y-3 border border-slate-300">
                   <div className="px-4 py-3 border-b-2 border-slate-400 mb-3 flex justify-between items-center">
                     <span className="text-xl font-medium">선택한 선물</span>
                     <span>{selectItem.length} 개</span>

@@ -17,19 +17,23 @@ const RoundCard = ({ onClickPlay, round }: IProp) => {
       <div className="grid grid-cols-2 w-fit h-fit rounded-xl overflow-hidden">
         <img
           src={tournament?.gifts[0].photo}
-          className="w-64 h-64 object-cover"
+          alt="gift_image1"
+          className="w-36 md:w-64 h-36 md:h-64 object-cover"
         />
         <img
           src={tournament?.gifts[1].photo}
-          className="w-64 h-64 object-cover"
+          alt="gift_image2"
+          className="w-36 md:w-64 h-36 md:h-64 object-cover"
         />
         <img
           src={tournament?.gifts[2].photo}
-          className="w-64 h-64 object-cover"
+          alt="gift_image3"
+          className="w-36 md:w-64 h-36 md:h-64 object-cover"
         />
         <img
           src={tournament?.gifts[3].photo}
-          className="w-64 h-64 object-cover"
+          alt="gift_image4"
+          className="w-36 md:w-64 h-36 md:h-64 object-cover"
         />
       </div>
       <span className="text-3xl font-semibold mb-2 mt-5">

@@ -11,7 +11,7 @@ const TournamentResult = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [result, setResult] = useRecoilState(worldCupResult);
-  const [error, setError] = useState("");
+
   const [isLoading, setIsLoading] = useState(true);
 
   const getResult = async (id: string) => {
@@ -22,7 +22,6 @@ const TournamentResult = () => {
       const data = snapshot.data() as IResult;
       setResult(data);
     } else {
-      setError("해당 정보의 데이터가 존재하지 않습니다.");
     }
     setIsLoading(false);
   };

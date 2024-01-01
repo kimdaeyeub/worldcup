@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { worldcupDetail, worldCupResult } from "../atom";
+import { worldcupDetail } from "../atom";
 import {
   addDoc,
   collection,
@@ -19,10 +19,8 @@ import SelectCard from "../components/SelectCard";
 const PlayTournament = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const [result, setResult] = useRecoilState(worldCupResult);
   const [tournament, setTournament] = useRecoilState(worldcupDetail);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [selectItem, setSelectItem] = useState(0);
   //현재 라운드의 아이템이 들어감.
@@ -45,7 +43,6 @@ const PlayTournament = () => {
       setCurrentRoundItem(data.gifts);
       setRound(data?.gifts.length!);
     } else {
-      setError("Does Not Exist");
     }
     setIsLoading(false);
   };
@@ -78,7 +75,7 @@ const PlayTournament = () => {
     } finally {
       navigate(`/worldcups/result/${id}`);
       setIsLoading(true);
-      setError("");
+
       setIsPlaying(false);
       setCurrentRoundItem(null);
       setNextRoundItem([]);

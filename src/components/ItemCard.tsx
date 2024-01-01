@@ -2,7 +2,7 @@ import React from "react";
 import { FaCertificate } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Tag from "./Tag";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { giftDetailState } from "../atom";
 
 interface IProp {
@@ -31,7 +31,7 @@ const ItemCard = ({
   username,
   index,
 }: IProp) => {
-  const [giftDetail, setGiftDetail] = useRecoilState(giftDetailState);
+  const setGiftDetail = useSetRecoilState(giftDetailState);
   const onClick = () => {
     setGiftDetail({
       title,
