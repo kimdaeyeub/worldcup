@@ -143,7 +143,7 @@ const AddWorldcup = () => {
           {gifts.length === 0 ? (
             <div>Empty...</div>
           ) : (
-            <div className="w-full h-full flex flex-col justify-start items-end px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 py-8">
+            <div className="w-full h-full flex flex-col justify-start items-end px-8 sm:px-10 md:px-12 lg:px-24 xl:px-28 py-8">
               <div className="w-full mb-8 flex md:flex-row flex-col-reverse justify-between items-center md:space-x-10">
                 <div className="w-full flex justify-center md:items-center md:space-x-4 md:flex-row flex-col items-start">
                   <span className="text-nowrap text-xl font-medium md:mb-0 mb-5">

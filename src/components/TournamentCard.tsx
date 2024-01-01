@@ -51,7 +51,7 @@ const TournamentCard = ({
           />
         </div>
         <h1 className="text-lg mt-3">{title}</h1>
-        <span className="w-full text-slate-500 text-sm mt-4">{creator}</span>
+        <span className="w-full text-slate-500 text-sm mt-2">{creator}</span>
         {/* <div className="w-full flex justify-start items-center space-x-2">
           <span className="text-slate-500 text-sm">2023-12-24</span>
           <span className="text-slate-500 text-sm">114명</span>

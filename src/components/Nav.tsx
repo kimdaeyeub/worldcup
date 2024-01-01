@@ -57,28 +57,28 @@ const Nav = () => {
   }, []);
 
   return (
-    <div className="w-full px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 py-8 border-b border-black flex justify-between items-center">
+    <div className="w-full px-8 sm:px-10 md:px-12 lg:px-24 xl:px-28 py-5 border-b border-black flex justify-between items-center">
       <h1
         onClick={onClickLogo}
         className="sm:text-4xl text-2xl font-semibold cursor-pointer font-dancingScript text-red-500"
       >
-        GiftWorldCup
+        GiftWorldCups
       </h1>
       <div className="flex justify-center items-center space-x-6">
         <Link to="/gifts">
-          <span className="text-xl font-medium font-SingleDay h-full md:flex hidden">
+          <span className="text-lg font-medium font-SingleDay h-full md:flex hidden">
             선물 조회하기
           </span>
         </Link>
         {user && (
           <>
             <Link to="/gifts/add">
-              <span className="text-xl font-medium h-full md:flex hidden">
+              <span className="text-lg font-medium h-full md:flex hidden">
                 선물 추가하기
               </span>
             </Link>
             <Link to="/worldcups/add">
-              <span className="text-xl font-medium h-full md:flex hidden">
+              <span className="text-lg font-medium h-full md:flex hidden">
                 월드컵 추가하기
               </span>
             </Link>

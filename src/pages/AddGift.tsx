@@ -69,7 +69,7 @@ const AddGift = () => {
     }
   };
   return (
-    <div className="w-full min-h-screen px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 py-14 bg-purple-400">
+    <div className="w-full min-h-screen px-8 sm:px-10 md:px-12 lg:px-24 xl:px-28 py-14 bg-purple-400">
       <form
         onSubmit={handleSubmit}
         className="rounded-2xl grid md:grid-cols-2 grid-cols-1 p-5 bg-white"

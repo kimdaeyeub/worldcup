@@ -35,7 +35,7 @@ const TournamentResult = () => {
     getResult(params.id!);
   }, []);
   return (
-    <div className="w-full min-h-screen px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 py-10 flex justify-center items-center bg-red-200">
+    <div className="w-full min-h-screen px-8 sm:px-10 md:px-12 lg:px-24 xl:px-28 py-10 flex justify-center items-center bg-red-200">
       {!isLoading && (
         <div className="w-full h-full bg-white rounded-2xl shadow-lg grid grid-cols-2 p-5 gap-3">
           <div className="w-full h-full overflow-hidden">

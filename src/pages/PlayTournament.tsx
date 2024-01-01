@@ -45,7 +45,6 @@ const PlayTournament = () => {
       setCurrentRoundItem(data.gifts);
       setRound(data?.gifts.length!);
     } else {
-      console.log("Not");
       setError("Does Not Exist");
     }
     setIsLoading(false);
@@ -116,14 +115,12 @@ const PlayTournament = () => {
       setNextRoundItem([]);
     }
   }, [round]);
-
-  console.log(currentRoundItem);
   return (
     <>
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <div className="w-full min-h-screen px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 py-14 bg-red-300 flex flex-col justify-center items-center">
+        <div className="w-full min-h-screen px-8 sm:px-10 md:px-12 lg:px-24 xl:px-28 py-14 bg-red-300 flex flex-col justify-center items-center">
           {isPlaying && (
             <span className="mb-10 text-2xl font-medium">
               {round !== 2 ? `${round}강 ${match + 1}번째 매치중..` : "결승전"}

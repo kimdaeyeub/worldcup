@@ -21,7 +21,6 @@ const GiftDetail = () => {
       const data = snapshot.data() as IGift;
       setGift(data);
     } else {
-      console.log("Not");
       setError("Does Not Exist");
     }
   };
@@ -33,10 +32,6 @@ const GiftDetail = () => {
     if (gift?.id !== params.id) {
       getGiftDetail(params.id!);
     }
-    // if (gift?.id !== params.id) {
-    //   console.log("different");
-    //   getGiftDetail(params.id!);
-    // }
 
     setIsLoading(false);
   }, [params]);
@@ -59,7 +54,7 @@ const GiftDetail = () => {
                   className="absolute md:top-full md:bottom-10 md:left-40 md:m-auto md:w-96 md:h-96 md:rounded-full object-cover w-full h-full"
                 />
               </div>
-              <section className="h-full w-full flex flex-col justify-start items-start px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 pt-16 pb-20 space-y-14">
+              <section className="h-full w-full flex flex-col justify-start items-start px-8 sm:px-10 md:px-12 lg:px-24 xl:px-28 pt-16 pb-20 space-y-14">
                 <ItemTextBox title="선물명" detail={gift!.title} />
                 <ItemTextBox title="상세정보" detail={gift!.description} />
               </section>

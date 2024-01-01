@@ -65,7 +65,7 @@ const Home = () => {
           ></path>
         </svg> */}
           </div>
-          <section className="min-h-96 w-full py-16 px-8 sm:px-10 md:px-12 lg:px-24 xl:px-44 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+          <section className="min-h-96 w-full py-16 px-8 sm:px-10 md:px-12 lg:px-24 xl:px-28 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
             {worldcups.map((item) => (
               <TournamentCard key={item.id} {...item} />
             ))}
